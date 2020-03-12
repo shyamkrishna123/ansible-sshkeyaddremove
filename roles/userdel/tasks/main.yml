@@ -1,0 +1,12 @@
+---
+- name: username
+  pause:
+    prompt: "Enter username:"
+    echo: yes
+  register: username
+
+- name: Remove the user
+  user:
+    name: "{{ username.user_input}}"
+    state: absent
+    remove: yes

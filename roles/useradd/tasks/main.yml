@@ -1,0 +1,24 @@
+---
+- name: username
+  pause:
+    prompt: "Enter username:"
+    echo: yes
+  register: username
+-   name: create user
+    user: 
+        name: "{{ username.user_input }}"
+        shell: /bin/bash
+        groups: developers
+        append: yes
+        create_home: yes
+-   name: key
+    pause:
+        prompt: "Enter the key"
+        echo: no
+    register: keyvalue
+
+- name: Set authorized key taken from file
+  authorized_key:
+    user: "{{ username.user_input }}"
+    state: present
+    key: "{{ keyvalue.user_input}}"

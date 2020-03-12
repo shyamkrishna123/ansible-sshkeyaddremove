@@ -1,0 +1,11 @@
+---
+-   hosts: localhost
+    gather_facts: true
+    become: true
+    vars_prompt:
+        - name: option
+          prompt: "Enter the choise \n 1. useradd \n 2. userdel \n"
+          private: no
+    roles:
+        - { role: useradd, when: option == "1" or option == "useradd" }
+        - { role: userdel, when: option== "2" or option == "userdel"}
