@@ -1,5 +1,0 @@
----
-vars_prompt:
-        - name: username
-          prompt: "username?"
-          private: 
