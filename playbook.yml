@@ -4,9 +4,10 @@
     become: true
     vars_prompt:
         - name: option
-          prompt: "Enter the choise \n 1. useradd \n 2. userdel \n 3. add group to sudoers"
+          prompt: "Enter the choise \n 1. useradd \n 2. Bulk user add \n 3. userdel \n 4. add group to sudoers \n"
           private: no
     roles:
         - { role: useradd, when: option == "1" or option == "useradd" }
-        - { role: userdel, when: option== "2" or option == "userdel"}
-        - { role: sudoers, when option == "3" or option == "add group to sudoers" or option  == "addgroup" }
+        - { role: useradd, when: option == "2" or option == "useradd" }
+        - { role: userdel, when: option== "3" or option == "userdel"}
+        - { role: sudoers, when option == "4" or option == "add group to sudoers" or option  == "addgroup" }

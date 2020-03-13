@@ -12,7 +12,7 @@
   lineinfile:
     path: /etc/sudoers
     regexp: '^{{ groupname.user_input }}'    
-    line: '{{ groupname.user_input }} ALL=(ALL) NOPASSWD: ALL'
+    line: '%{{ groupname.user_input }} ALL=(ALL) NOPASSWD:ALL'
     validate: 'visudo -cf %s'
 - include_role:
     name: useradd

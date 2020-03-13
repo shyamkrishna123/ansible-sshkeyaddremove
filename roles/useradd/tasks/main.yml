@@ -27,3 +27,13 @@
     user: "{{ username.user_input }}"
     state: present
     key: "{{ keyvalue.user_input}}"
+
+
+- meta: end_play
+  when:
+    option == "1"
+- name: bulk condition
+  include_role:
+    name: useradd
+  when:
+    option == "2"
