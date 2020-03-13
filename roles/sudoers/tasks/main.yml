@@ -1,0 +1,18 @@
+
+- name: groupname
+  pause:
+    prompt: "Enter the groupname"
+    echo: yes
+  register: groupname
+- name: create group
+  group: 
+    name: "{{ groupname.user_input }}"
+    state: present
+- name: Add user to sudoers file
+  lineinfile:
+    path: /etc/sudoers
+    regexp: '^{{ groupname.user_input }}'    
+    line: '{{ groupname.user_input }} ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'
+- include_role:
+    name: useradd
