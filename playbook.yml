@@ -9,5 +9,5 @@
     roles:
         - { role: useradd, when: option == "1" or option == "useradd" }
         - { role: useradd, when: option == "2" or option == "useradd" }
-        - { role: userdel, when: option== "3" or option == "userdel"}
-        - { role: sudoers, when option == "4" or option == "add group to sudoers" or option  == "addgroup" }
+        - { role: userdel, when: option== "3" or option == "userdel" }
+        - { role: sudoers, when option == "4" or option == "add group to sudoers" }

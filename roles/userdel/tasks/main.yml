@@ -10,3 +10,6 @@
     name: "{{ username.user_input}}"
     state: absent
     remove: yes
+- meta: end_play
+  when:
+    option == "3"
